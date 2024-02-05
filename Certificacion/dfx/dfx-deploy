@@ -1,0 +1,24 @@
+#!/bin/bash
+
+canister=${2-bazaar}
+DFX_MOC_PATH="$(vessel bin)/moc"
+
+function deploy {
+    if [ "$1" == "ic" ]; then
+        dfx deploy --no-wallet --network=ic $canister --argument "(\"ryjl3-tyaaa-aaaaa-aaaba-cai\")"
+        bazaarId=$(dfx canister --network=ic id $canister)
+        dfx deploy --no-wallet --network=ic mock_nft --argument "(\"$bazaarId\")"
+    else
+        dfx deploy mock_ledger
+        adminId=$(npx ts-node tasks/adminId.ts)
+        dfx canister call mock_ledger addAdmin "(principal \"$adminId\")"
+        ledgerId=$(dfx canister id mock_ledger)
+        dfx deploy $canister --argument "(\"$ledgerId\")"
+        dfx canister call $canister addAdmin "(principal \"$adminId\")"
+        bazaarId=$(dfx canister id $canister)
+        dfx deploy mock_nft --argument "(\"$bazaarId\")"
+        dfx canister call mock_nft addAdmin "(principal \"$adminId\")"
+    fi
+}
+
+deploy "$@"

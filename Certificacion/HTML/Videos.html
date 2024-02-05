@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ClickApp</title>
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <button onclick="location.href='#inicio'">INICIO</button>
+        <button onmouseover="mostrarSubMenu('fotos')">FOTOS
+            <div class="submenu">
+                <p>Mis fotos</p>
+                <p>Fotos de amigos</p>
+                <p>Fotos públicas</p>
+                <p>¿Qué le gustaría hacer?</p>
+                <!-- Submenús adicionales para FOTOS -->
+                <div class="submenu-item" onmouseover="mostrarSubMenu('subir_foto')">Subir Foto</div>
+                <div class="submenu-item" onmouseover="mostrarSubMenu('ver_mis_fotos')">Ver Mis Fotos</div>
+                <div class="submenu-item" onmouseover="mostrarSubMenu('ver_fotos_amigos')">Ver Fotos de Amigos</div>
+            </div>
+        </button>
+        <button onmouseover="mostrarSubMenu('videos')">VIDEOS
+            <div class="submenu">
+                <p>Mis videos</p>
+                <p>Videos de amigos</p>
+                <p>Videos públicos</p>
+                <p>¿Qué le gustaría hacer?</p>
+                <!-- Submenús adicionales para VIDEOS -->
+                <div class="submenu-item" onmouseover="mostrarSubMenu('subir_video')">Subir Video</div>
+                <div class="submenu-item" onmouseover="mostrarSubMenu('ver_mis_videos')">Ver Mis Videos</div>
+                <div class="submenu-item" onmouseover="mostrarSubMenu('ver_videos_amigos')">Ver Videos de Amigos</div>
+            </div>
+        </button>
+        <!-- ...otros botones de la barra de navegación... -->
+        <button onclick="mostrarPublicaciones()">POSTEOS</button>
+    </div>
+
+    <!-- Contenido de tu página -->
+    <div class="module" id="script.js">
+        <!-- Aquí va el contenido de tu página -->
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
